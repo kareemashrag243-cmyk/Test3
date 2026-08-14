@@ -1,441 +1,1791 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Memories</title>
+<title>Kareem & Asmaa — Our Memories</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet">
+
 
 <style>
+
+/* ==================================================
+   RESET
+================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #ffd6e7;
-    color: #6b2145;
+
+    background: #f8e9ec;
+
+    color: #3a292d;
+
+    font-family: "Inter", sans-serif;
+
+    font-weight: 300;
+
     overflow-x: hidden;
 }
 
-/* HERO */
+
+/* ==================================================
+   HERO
+================================================== */
+
 .hero {
-    min-height: 100vh;
+
+    height: 100svh;
+
+    min-height: 650px;
+
+    position: relative;
+
+    overflow: hidden;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #ffd6e7, #ffb6d5);
+
+    align-items: flex-end;
 }
+
+
+.hero-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(90,40,55,.02),
+            rgba(90,40,55,.10) 50%,
+            rgba(55,20,30,.60) 100%
+        ),
+
+        url("images/hero.jpg")
+        center/cover no-repeat;
+
+    transform: scale(1.03);
+
+    animation:
+        heroZoom 8s ease-out forwards;
+}
+
+
+@keyframes heroZoom {
+
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1.03);
+    }
+
+}
+
 
 .hero-content {
-    max-width: 700px;
-}
 
-.hero h1 {
-    font-size: 55px;
-    margin-bottom: 15px;
-    color: #8f2858;
-}
-
-.hero p {
-    font-size: 20px;
-    color: #7a3153;
-    line-height: 1.6;
-}
-
-.hero-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 30px;
-    background: #e75480;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 16px;
-    transition: 0.3s;
-}
-
-.hero-btn:hover {
-    transform: scale(1.05);
-    background: #d94370;
-}
-
-/* MEMORIES */
-.memories {
-    padding: 80px 20px;
-    text-align: center;
-    background: #ffe5ef;
-}
-
-.memories h2 {
-    font-size: 38px;
-    margin-bottom: 10px;
-    color: #8f2858;
-}
-
-.memories-subtitle {
-    margin-bottom: 40px;
-    color: #8a4965;
-}
-
-/* SWIPE AREA */
-.swipe-container {
-    width: 100%;
-    max-width: 380px;
-    height: 520px;
-    margin: auto;
     position: relative;
-    perspective: 1000px;
-}
 
-.card {
-    position: absolute;
+    z-index: 2;
+
     width: 100%;
-    height: 100%;
-    background: white;
-    padding: 12px;
-    border-radius: 22px;
-    box-shadow: 0 15px 35px rgba(150, 50, 90, 0.2);
-    overflow: hidden;
-    cursor: grab;
-    user-select: none;
-    transition: transform 0.35s ease, opacity 0.35s ease;
-}
 
-.card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-    pointer-events: none;
-}
+    padding:
+        40px 25px 55px;
 
-.card:nth-child(2) {
-    transform: scale(0.95);
-    z-index: 1;
-}
-
-.card:nth-child(3) {
-    transform: scale(0.90);
-    z-index: 0;
-}
-
-.card.active {
-    z-index: 10;
-}
-
-/* MESSAGE */
-.message {
-    padding: 80px 25px;
     text-align: center;
-    background: #ffd6e7;
+
+    color: white;
+
+    animation:
+        fadeUp 1.4s ease;
 }
 
-.message h2 {
-    font-size: 36px;
-    color: #8f2858;
+
+.small-title {
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+
+    font-size: 10px;
+
+    opacity: .85;
+
+    margin-bottom: 18px;
+}
+
+
+.names {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(65px, 17vw, 145px);
+
+    line-height: .78;
+
+    font-weight: 400;
+
+    letter-spacing: -4px;
+}
+
+
+.date {
+
+    margin-top: 25px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    opacity: .85;
+}
+
+
+.enter-btn {
+
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding:
+        14px 30px;
+
+    border:
+        1px solid rgba(255,255,255,.7);
+
+    border-radius: 100px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+
+.enter-btn:hover {
+
+    background: white;
+
+    color: #6e3f4b;
+}
+
+
+/* ==================================================
+   INTRO
+================================================== */
+
+.intro {
+
+    padding:
+        120px 25px;
+
+    text-align: center;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+.eyebrow {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 4px;
+
+    color: #a96d7a;
+
     margin-bottom: 20px;
 }
 
-.message p {
-    max-width: 650px;
-    margin: auto;
-    line-height: 1.8;
-    font-size: 18px;
-    color: #713b54;
+
+.section-title {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(45px, 11vw, 85px);
+
+    font-weight: 400;
+
+    line-height: .95;
+
+    color: #4a3037;
 }
 
-/* FOOTER */
-footer {
-    background: #e75480;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
+
+.intro p {
+
+    max-width: 500px;
+
+    margin:
+        30px auto 0;
+
+    color: #8d6871;
+
+    line-height: 1.9;
+
+    font-size: 14px;
 }
+
+
+/* ==================================================
+   STORY
+================================================== */
+
+.story {
+
+    padding:
+        80px 20px 130px;
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+
+.story-head {
+
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+
+.timeline {
+
+    position: relative;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        rgba(160,90,105,.25);
+}
+
+
+.memory {
+
+    width: 50%;
+
+    padding:
+        30px 50px;
+
+    position: relative;
+}
+
+
+.memory:nth-child(odd) {
+
+    margin-left: 0;
+
+    text-align: right;
+}
+
+
+.memory:nth-child(even) {
+
+    margin-left: 50%;
+}
+
+
+.memory-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border:
+        1px solid #b77b87;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 42px;
+
+    background: #f8e9ec;
+}
+
+
+.memory:nth-child(odd)
+.memory-dot {
+
+    right: -4px;
+}
+
+
+.memory:nth-child(even)
+.memory-dot {
+
+    left: -4px;
+}
+
+
+.memory img {
+
+    width: 100%;
+
+    max-height: 450px;
+
+    object-fit: cover;
+
+    margin-bottom: 20px;
+
+    border-radius: 2px;
+
+    filter:
+        saturate(.9)
+        brightness(.98);
+}
+
+
+.memory-date {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #b07784;
+}
+
+
+.memory h3 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+
+    margin: 8px 0;
+
+    color: #51343d;
+}
+
+
+.memory p {
+
+    color: #906c75;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   SWIPE MEMORIES
+================================================== */
+
+.stack-section {
+
+    padding:
+        120px 20px 150px;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+
+.stack-title {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+
+.swipe-hint {
+
+    margin-top: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #a66d79;
+
+    opacity: .8;
+}
+
+
+.photo-stack {
+
+    width:
+        min(88vw, 430px);
+
+    height: 560px;
+
+    margin: auto;
+
+    position: relative;
+
+    perspective: 1000px;
+}
+
+
+.stack-photo {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #fff;
+
+    padding: 10px;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 25px 60px rgba(130,70,85,.20);
+
+    cursor: grab;
+
+    touch-action: pan-y;
+
+    user-select: none;
+
+    will-change: transform;
+
+    transition:
+        transform .45s
+        cubic-bezier(.2,.8,.2,1),
+
+        opacity .45s ease;
+}
+
+
+.stack-photo.dragging {
+
+    cursor: grabbing;
+
+    transition: none;
+}
+
+
+.stack-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+
+/* ترتيب الكروت */
+
+.stack-photo:nth-child(1) {
+
+    z-index: 5;
+
+    transform:
+        rotate(-2deg);
+}
+
+
+.stack-photo:nth-child(2) {
+
+    z-index: 4;
+
+    transform:
+        scale(.97)
+        rotate(3deg)
+        translate(5px, 5px);
+}
+
+
+.stack-photo:nth-child(3) {
+
+    z-index: 3;
+
+    transform:
+        scale(.94)
+        rotate(-4deg)
+        translate(-5px, 10px);
+}
+
+
+.stack-photo:nth-child(4) {
+
+    z-index: 2;
+
+    transform:
+        scale(.91)
+        rotate(5deg)
+        translate(7px, 15px);
+}
+
+
+.stack-photo:nth-child(5) {
+
+    z-index: 1;
+
+    transform:
+        scale(.88)
+        rotate(-6deg)
+        translate(-8px, 20px);
+}
+
+
+/* ==================================================
+   VIDEO
+================================================== */
+
+.video-section {
+
+    padding:
+        120px 18px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+.video-head {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+.video-wrapper {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #efd5db;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 20px 50px rgba(120,60,75,.15);
+}
+
+
+.video-wrapper video {
+
+    width: 100%;
+
+    display: block;
+}
+
+
+/* ==================================================
+   SONG
+================================================== */
+
+.song {
+
+    padding:
+        130px 25px;
+
+    text-align: center;
+
+    background: #f1d8de;
+
+    color: #4a3037;
+}
+
+
+.song .section-title {
+
+    color: #4a3037;
+}
+
+
+.song-circle {
+
+    width: 90px;
+
+    height: 90px;
+
+    border:
+        1px solid rgba(140,75,90,.4);
+
+    border-radius: 50%;
+
+    margin:
+        35px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 22px;
+
+    color: #734654;
+
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+
+.song-circle:hover {
+
+    transform: scale(1.05);
+
+}
+
+
+.song-name {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 32px;
+
+    color: #563741;
+}
+
+
+/* ==================================================
+   NOTE
+================================================== */
+
+.note {
+
+    padding:
+        140px 25px;
+
+    text-align: center;
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+
+.note-text {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(30px, 7vw, 55px);
+
+    line-height: 1.15;
+
+    font-style: italic;
+
+    color: #51343d;
+}
+
+
+.note-author {
+
+    margin-top: 35px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: .55;
+
+    text-transform: uppercase;
+
+    color: #8c5e69;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+
+    padding:
+        80px 20px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(160,90,105,.18);
+
+    background: #f4dfe4;
+}
+
+
+.footer-names {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 40px;
+
+    color: #51343d;
+}
+
 
 footer p {
-    font-size: 15px;
+
+    margin-top: 15px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    opacity: .55;
+
+    text-transform: uppercase;
+
+    color: #8b626d;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
 
-    .hero h1 {
-        font-size: 42px;
-    }
+/* ==================================================
+   MUSIC BUTTON
+================================================== */
 
-    .hero p {
-        font-size: 17px;
-    }
+.music-btn {
 
-    .memories h2,
-    .message h2 {
-        font-size: 30px;
-    }
+    position: fixed;
 
-    .swipe-container {
-        height: 480px;
-        max-width: 330px;
-    }
+    right: 20px;
+
+    bottom: 20px;
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(140,75,90,.4);
+
+    background:
+        rgba(255,245,247,.85);
+
+    backdrop-filter: blur(10px);
+
+    color: #734654;
+
+    z-index: 100;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(120,60,75,.18);
 }
+
+
+/* ==================================================
+   ANIMATION
+================================================== */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .hero-content {
+
+        padding-bottom: 45px;
+
+    }
+
+
+    .names {
+
+        font-size: 76px;
+
+    }
+
+
+    .timeline::before {
+
+        left: 8px;
+
+    }
+
+
+    .memory,
+    .memory:nth-child(even) {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            30px 10px 60px 35px;
+
+        text-align: left;
+
+    }
+
+
+    .memory-dot,
+    .memory:nth-child(odd)
+    .memory-dot,
+    .memory:nth-child(even)
+    .memory-dot {
+
+        left: 4px;
+
+        right: auto;
+
+    }
+
+
+    .photo-stack {
+
+        width: 88vw;
+
+        height: 500px;
+
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-bg"></div>
+
 
     <div class="hero-content">
 
-        <h1>Ahmed</h1>
 
-        <p>
-            Some memories are too special to be forgotten.
-            <br>
-            So here they are, all in one place.
-        </p>
+        <div class="small-title">
 
-        <a href="#memories" class="hero-btn">
-            Our Memories
+            A collection of our memories
+
+        </div>
+
+
+        <h1 class="names">
+
+            Kareem<br>
+            &amp; Asmaa
+
+        </h1>
+
+
+        <div class="date">
+
+            14 · 08 · 2026
+
+        </div>
+
+
+        <a
+            href="#story"
+            class="enter-btn"
+        >
+
+            Enter our story
+
         </a>
 
-    </div>
-
-</section>
-
-
-<!-- MEMORIES -->
-<section class="memories" id="memories">
-
-    <h2>Our Memories</h2>
-
-    <p class="memories-subtitle">
-        Swipe through the moments 🤍
-    </p>
-
-    <div class="swipe-container" id="swipeContainer">
-
-        <!-- غير أسماء الصور هنا حسب أسماء صورك -->
-        <div class="card active">
-            <img src="photo1.jpg" alt="Memory">
-        </div>
-
-        <div class="card">
-            <img src="photo2.jpg" alt="Memory">
-        </div>
-
-        <div class="card">
-            <img src="photo3.jpg" alt="Memory">
-        </div>
-
-        <div class="card">
-            <img src="photo4.jpg" alt="Memory">
-        </div>
-
-        <div class="card">
-            <img src="photo5.jpg" alt="Memory">
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- MESSAGE -->
-<section class="message">
 
-    <h2>A Little Message</h2>
+<!-- ==================================================
+     INTRO
+================================================== -->
+
+<section class="intro">
+
+
+    <div class="eyebrow">
+
+        Our little universe
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        Some moments<br>
+        deserve to stay.
+
+    </h2>
+
 
     <p>
-        Every picture has a story,
-        every moment has a feeling,
-        and some memories will always stay special.
+
+        Not just photos.
+        Not just videos.
+
+        A little place where our
+        favorite moments can live forever.
+
     </p>
+
 
 </section>
 
 
-<!-- FOOTER -->
+
+<!-- ==================================================
+     STORY
+================================================== -->
+
+<section
+    class="story"
+    id="story"
+>
+
+
+    <div class="story-head">
+
+
+        <div class="eyebrow">
+
+            Our story
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            The moments
+
+        </h2>
+
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="memory">
+
+            <span class="memory-dot"></span>
+
+
+            <img
+                src="images/memory1.jpg"
+                alt="Our memory"
+            >
+
+
+            <div class="memory-date">
+
+                The beginning
+
+            </div>
+
+
+            <h3>
+
+                Where it all started
+
+            </h3>
+
+
+            <p>
+
+                Every story has a first moment.
+                This was ours.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="memory">
+
+            <span class="memory-dot"></span>
+
+
+            <img
+                src="images/memory2.jpg"
+                alt="Our memory"
+            >
+
+
+            <div class="memory-date">
+
+                One beautiful day
+
+            </div>
+
+
+            <h3>
+
+                A day to remember
+
+            </h3>
+
+
+            <p>
+
+                One of those days
+                we wish we could experience again.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="memory">
+
+            <span class="memory-dot"></span>
+
+
+            <img
+                src="images/memory3.jpg"
+                alt="Our memory"
+            >
+
+
+            <div class="memory-date">
+
+                Together
+
+            </div>
+
+
+            <h3>
+
+                Just us
+
+            </h3>
+
+
+            <p>
+
+                The little moments always
+                become the biggest memories.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SWIPE MEMORIES
+================================================== -->
+
+<section class="stack-section">
+
+
+    <div class="stack-title">
+
+
+        <div class="eyebrow">
+
+            Memories
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            One moment<br>
+            at a time.
+
+        </h2>
+
+
+        <p class="swipe-hint">
+
+            Swipe to discover
+
+        </p>
+
+
+    </div>
+
+
+    <div class="photo-stack">
+
+
+        <div class="stack-photo">
+
+            <img
+                src="images/photo1.jpg"
+                alt="Memory 1"
+            >
+
+        </div>
+
+
+        <div class="stack-photo">
+
+            <img
+                src="images/photo2.jpg"
+                alt="Memory 2"
+            >
+
+        </div>
+
+
+        <div class="stack-photo">
+
+            <img
+                src="images/photo3.jpg"
+                alt="Memory 3"
+            >
+
+        </div>
+
+
+        <div class="stack-photo">
+
+            <img
+                src="images/photo4.jpg"
+                alt="Memory 4"
+            >
+
+        </div>
+
+
+        <div class="stack-photo">
+
+            <img
+                src="images/photo5.jpg"
+                alt="Memory 5"
+            >
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     VIDEO
+================================================== -->
+
+<section class="video-section">
+
+
+    <div class="video-head">
+
+
+        <div class="eyebrow">
+
+            Moments in motion
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            Our little film.
+
+        </h2>
+
+
+    </div>
+
+
+    <div class="video-wrapper">
+
+
+        <video
+            controls
+            playsinline
+            poster="images/video-cover.jpg"
+        >
+
+
+            <source
+                src="videos/memory.mp4"
+                type="video/mp4"
+            >
+
+
+            Your browser does not support video.
+
+
+        </video>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SONG
+================================================== -->
+
+<section class="song">
+
+
+    <div class="eyebrow">
+
+        Our song
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        A song that<br>
+        feels like us.
+
+    </h2>
+
+
+    <div
+        class="song-circle"
+        id="songCircle"
+    >
+
+        ♫
+
+    </div>
+
+
+    <div class="song-name">
+
+        Our favorite song
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     NOTE
+================================================== -->
+
+<section class="note">
+
+
+    <div class="eyebrow">
+
+        A little note
+
+    </div>
+
+
+    <div class="note-text">
+
+        "If I could keep one thing
+        from every moment,
+        it would be the feeling
+        of being with you."
+
+    </div>
+
+
+    <div class="note-author">
+
+        Kareem &amp; Asmaa
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
 <footer>
 
-    <p>Made with 🤍</p>
+
+    <div class="footer-names">
+
+        Kareem &amp; Asmaa
+
+    </div>
+
+
+    <p>
+
+        More memories to come...
+
+    </p>
+
 
 </footer>
 
 
+
+<!-- ==================================================
+     MUSIC
+================================================== -->
+
+<audio
+    id="music"
+    loop
+>
+
+    <source
+        src="music/song.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    class="music-btn"
+    id="musicBtn"
+>
+
+    ♫
+
+</button>
+
+
+
 <script>
 
-const container = document.getElementById("swipeContainer");
+/* ==================================================
+   SWIPE PHOTO STACK
+================================================== */
+
+const stack =
+    document.querySelector(".photo-stack");
+
+const cards =
+    document.querySelectorAll(".stack-photo");
+
+
+let activeCard = 0;
 
 let startX = 0;
+
 let currentX = 0;
-let isDragging = false;
 
-function getActiveCard() {
-    return container.querySelector(".card.active");
-}
+let dragging = false;
 
-function startDrag(e) {
 
-    const card = getActiveCard();
+/* ==================================================
+   TOUCH START
+================================================== */
 
-    if (!card) return;
+stack.addEventListener(
+    "touchstart",
+    startSwipe,
+    { passive: true }
+);
 
-    isDragging = true;
 
-    startX = e.type.includes("touch")
-        ? e.touches[0].clientX
-        : e.clientX;
+function startSwipe(event) {
 
-    card.style.transition = "none";
-}
+    if (activeCard >= cards.length) {
 
-function moveDrag(e) {
-
-    if (!isDragging) return;
-
-    const card = getActiveCard();
-
-    if (!card) return;
-
-    currentX = e.type.includes("touch")
-        ? e.touches[0].clientX
-        : e.clientX;
-
-    const diff = currentX - startX;
-
-    card.style.transform =
-        `translateX(${diff}px) rotate(${diff / 15}deg)`;
-}
-
-function endDrag() {
-
-    if (!isDragging) return;
-
-    isDragging = false;
-
-    const card = getActiveCard();
-
-    if (!card) return;
-
-    const diff = currentX - startX;
-
-    card.style.transition =
-        "transform 0.35s ease, opacity 0.35s ease";
-
-    if (Math.abs(diff) > 100) {
-
-        const direction = diff > 0 ? 1 : -1;
-
-        card.style.transform =
-            `translateX(${direction * 600}px) rotate(${direction * 30}deg)`;
-
-        card.style.opacity = "0";
-
-        setTimeout(() => {
-
-            card.classList.remove("active");
-
-            card.style.transform = "";
-            card.style.opacity = "";
-
-            const cards =
-                container.querySelectorAll(".card");
-
-            if (cards.length > 0) {
-
-                const nextCard =
-                    Array.from(cards).find(c =>
-                        !c.classList.contains("active")
-                    );
-
-                if (nextCard) {
-                    nextCard.classList.add("active");
-                }
-            }
-
-            updateCards();
-
-        }, 350);
-
-    } else {
-
-        card.style.transform = "";
+        return;
 
     }
 
+
+    const touch =
+        event.touches[0];
+
+
+    startX =
+        touch.clientX;
+
+
     currentX = 0;
-}
 
-function updateCards() {
+    dragging = true;
 
-    const cards =
-        Array.from(container.querySelectorAll(".card"));
 
-    const activeIndex =
-        cards.findIndex(card =>
-            card.classList.contains("active")
-        );
+    cards[activeCard]
+        .classList
+        .add("dragging");
 
-    cards.forEach((card, index) => {
-
-        if (card.classList.contains("active")) {
-            card.style.zIndex = "10";
-            card.style.transform = "";
-        }
-
-        else {
-
-            const distance =
-                (index - activeIndex + cards.length)
-                % cards.length;
-
-            if (distance === 1) {
-
-                card.style.zIndex = "5";
-                card.style.transform = "scale(0.95)";
-
-            }
-
-            else if (distance === 2) {
-
-                card.style.zIndex = "4";
-                card.style.transform = "scale(0.90)";
-
-            }
-
-            else {
-
-                card.style.zIndex = "0";
-                card.style.transform = "scale(0.85)";
-
-            }
-        }
-    });
 }
 
 
-/* TOUCH */
-container.addEventListener("touchstart", startDrag);
+/* ==================================================
+   TOUCH MOVE
+================================================== */
 
-container.addEventListener("touchmove", moveDrag);
+stack.addEventListener(
+    "touchmove",
+    moveSwipe,
+    { passive: true }
+);
 
-container.addEventListener("touchend", endDrag);
+
+function moveSwipe(event) {
+
+    if (!dragging) {
+
+        return;
+
+    }
 
 
-/* MOUSE */
-container.addEventListener("mousedown", startDrag);
+    const card =
+        cards[activeCard];
 
-document.addEventListener("mousemove", moveDrag);
 
-document.addEventListener("mouseup", endDrag);
+    const touch =
+        event.touches[0];
+
+
+    currentX =
+        touch.clientX - startX;
+
+
+    const rotation =
+        currentX / 15;
+
+
+    card.style.transform =
+
+        `translateX(${currentX}px)
+         rotate(${rotation}deg)`;
+
+
+    const nextCard =
+        cards[activeCard + 1];
+
+
+    if (nextCard) {
+
+
+        const progress =
+
+            Math.min(
+                Math.abs(currentX) / 250,
+                1
+            );
+
+
+        const scale =
+
+            .97 +
+            (.03 * progress);
+
+
+        nextCard.style.transform =
+
+            `scale(${scale})
+             rotate(0deg)
+             translateY(${10 - progress * 10}px)`;
+
+    }
+
+}
+
+
+/* ==================================================
+   TOUCH END
+================================================== */
+
+stack.addEventListener(
+    "touchend",
+    endSwipe
+);
+
+
+function endSwipe() {
+
+    if (!dragging) {
+
+        return;
+
+    }
+
+
+    dragging = false;
+
+
+    const card =
+        cards[activeCard];
+
+
+    card.classList.remove("dragging");
+
+
+    const threshold = 120;
+
+
+    /* SWIPE */
+
+    if (
+        Math.abs(currentX)
+        > threshold
+    ) {
+
+
+        const direction =
+
+            currentX > 0
+                ? 1
+                : -1;
+
+
+        card.style.transform =
+
+            `translateX(${direction * 120}vw)
+             rotate(${direction * 35}deg)`;
+
+
+        card.style.opacity = "0";
+
+
+        card.style.pointerEvents =
+            "none";
+
+
+        activeCard++;
+
+
+        setTimeout(() => {
+
+
+            const nextCard =
+                cards[activeCard];
+
+
+            if (nextCard) {
+
+                nextCard.style.transform =
+                    "rotate(-2deg)";
+
+            }
+
+
+        }, 150);
+
+    }
+
+
+    /* RETURN */
+
+    else {
+
+
+        card.style.transform =
+            "rotate(-2deg)";
+
+
+        const nextCard =
+            cards[activeCard + 1];
+
+
+        if (nextCard) {
+
+            nextCard.style.transform =
+
+                "scale(.97) " +
+                "rotate(3deg) " +
+                "translate(5px, 5px)";
+
+        }
+
+    }
+
+
+    currentX = 0;
+
+}
+
+
+/* ==================================================
+   MUSIC
+================================================== */
+
+const music =
+    document.getElementById("music");
+
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+
+const songCircle =
+    document.getElementById("songCircle");
+
+
+let playing = false;
+
+
+function toggleMusic() {
+
+
+    if (playing) {
+
+
+        music.pause();
+
+
+        musicBtn.innerHTML =
+            "♫";
+
+
+        songCircle.innerHTML =
+            "♫";
+
+
+        playing = false;
+
+
+    }
+
+    else {
+
+
+        music.play();
+
+
+        musicBtn.innerHTML =
+            "Ⅱ";
+
+
+        songCircle.innerHTML =
+            "Ⅱ";
+
+
+        playing = true;
+
+    }
+
+}
+
+
+musicBtn.addEventListener(
+    "click",
+    toggleMusic
+);
+
+
+songCircle.addEventListener(
+    "click",
+    toggleMusic
+);
 
 </script>
 
+
 </body>
+
 </html>
