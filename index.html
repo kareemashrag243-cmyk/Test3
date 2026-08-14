@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Memories</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #ffd6e7;
+    color: #6b2145;
+    overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #ffd6e7, #ffb6d5);
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+    color: #8f2858;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #7a3153;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 30px;
+    background: #e75480;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    transform: scale(1.05);
+    background: #d94370;
+}
+
+/* MEMORIES */
+.memories {
+    padding: 80px 20px;
+    text-align: center;
+    background: #ffe5ef;
+}
+
+.memories h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: #8f2858;
+}
+
+.memories-subtitle {
+    margin-bottom: 40px;
+    color: #8a4965;
+}
+
+/* SWIPE AREA */
+.swipe-container {
+    width: 100%;
+    max-width: 380px;
+    height: 520px;
+    margin: auto;
+    position: relative;
+    perspective: 1000px;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 12px;
+    border-radius: 22px;
+    box-shadow: 0 15px 35px rgba(150, 50, 90, 0.2);
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.card:nth-child(2) {
+    transform: scale(0.95);
+    z-index: 1;
+}
+
+.card:nth-child(3) {
+    transform: scale(0.90);
+    z-index: 0;
+}
+
+.card.active {
+    z-index: 10;
+}
+
+/* MESSAGE */
+.message {
+    padding: 80px 25px;
+    text-align: center;
+    background: #ffd6e7;
+}
+
+.message h2 {
+    font-size: 36px;
+    color: #8f2858;
+    margin-bottom: 20px;
+}
+
+.message p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #713b54;
+}
+
+/* FOOTER */
+footer {
+    background: #e75480;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer p {
+    font-size: 15px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .memories h2,
+    .message h2 {
+        font-size: 30px;
+    }
+
+    .swipe-container {
+        height: 480px;
+        max-width: 330px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Ahmed</h1>
+
+        <p>
+            Some memories are too special to be forgotten.
+            <br>
+            So here they are, all in one place.
+        </p>
+
+        <a href="#memories" class="hero-btn">
+            Our Memories
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- MEMORIES -->
+<section class="memories" id="memories">
+
+    <h2>Our Memories</h2>
+
+    <p class="memories-subtitle">
+        Swipe through the moments 🤍
+    </p>
+
+    <div class="swipe-container" id="swipeContainer">
+
+        <!-- غير أسماء الصور هنا حسب أسماء صورك -->
+        <div class="card active">
+            <img src="photo1.jpg" alt="Memory">
+        </div>
+
+        <div class="card">
+            <img src="photo2.jpg" alt="Memory">
+        </div>
+
+        <div class="card">
+            <img src="photo3.jpg" alt="Memory">
+        </div>
+
+        <div class="card">
+            <img src="photo4.jpg" alt="Memory">
+        </div>
+
+        <div class="card">
+            <img src="photo5.jpg" alt="Memory">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MESSAGE -->
+<section class="message">
+
+    <h2>A Little Message</h2>
+
+    <p>
+        Every picture has a story,
+        every moment has a feeling,
+        and some memories will always stay special.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>Made with 🤍</p>
+
+</footer>
+
+
+<script>
+
+const container = document.getElementById("swipeContainer");
+
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+
+function getActiveCard() {
+    return container.querySelector(".card.active");
+}
+
+function startDrag(e) {
+
+    const card = getActiveCard();
+
+    if (!card) return;
+
+    isDragging = true;
+
+    startX = e.type.includes("touch")
+        ? e.touches[0].clientX
+        : e.clientX;
+
+    card.style.transition = "none";
+}
+
+function moveDrag(e) {
+
+    if (!isDragging) return;
+
+    const card = getActiveCard();
+
+    if (!card) return;
+
+    currentX = e.type.includes("touch")
+        ? e.touches[0].clientX
+        : e.clientX;
+
+    const diff = currentX - startX;
+
+    card.style.transform =
+        `translateX(${diff}px) rotate(${diff / 15}deg)`;
+}
+
+function endDrag() {
+
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    const card = getActiveCard();
+
+    if (!card) return;
+
+    const diff = currentX - startX;
+
+    card.style.transition =
+        "transform 0.35s ease, opacity 0.35s ease";
+
+    if (Math.abs(diff) > 100) {
+
+        const direction = diff > 0 ? 1 : -1;
+
+        card.style.transform =
+            `translateX(${direction * 600}px) rotate(${direction * 30}deg)`;
+
+        card.style.opacity = "0";
+
+        setTimeout(() => {
+
+            card.classList.remove("active");
+
+            card.style.transform = "";
+            card.style.opacity = "";
+
+            const cards =
+                container.querySelectorAll(".card");
+
+            if (cards.length > 0) {
+
+                const nextCard =
+                    Array.from(cards).find(c =>
+                        !c.classList.contains("active")
+                    );
+
+                if (nextCard) {
+                    nextCard.classList.add("active");
+                }
+            }
+
+            updateCards();
+
+        }, 350);
+
+    } else {
+
+        card.style.transform = "";
+
+    }
+
+    currentX = 0;
+}
+
+function updateCards() {
+
+    const cards =
+        Array.from(container.querySelectorAll(".card"));
+
+    const activeIndex =
+        cards.findIndex(card =>
+            card.classList.contains("active")
+        );
+
+    cards.forEach((card, index) => {
+
+        if (card.classList.contains("active")) {
+            card.style.zIndex = "10";
+            card.style.transform = "";
+        }
+
+        else {
+
+            const distance =
+                (index - activeIndex + cards.length)
+                % cards.length;
+
+            if (distance === 1) {
+
+                card.style.zIndex = "5";
+                card.style.transform = "scale(0.95)";
+
+            }
+
+            else if (distance === 2) {
+
+                card.style.zIndex = "4";
+                card.style.transform = "scale(0.90)";
+
+            }
+
+            else {
+
+                card.style.zIndex = "0";
+                card.style.transform = "scale(0.85)";
+
+            }
+        }
+    });
+}
+
+
+/* TOUCH */
+container.addEventListener("touchstart", startDrag);
+
+container.addEventListener("touchmove", moveDrag);
+
+container.addEventListener("touchend", endDrag);
+
+
+/* MOUSE */
+container.addEventListener("mousedown", startDrag);
+
+document.addEventListener("mousemove", moveDrag);
+
+document.addEventListener("mouseup", endDrag);
+
+</script>
+
+</body>
+</html>
